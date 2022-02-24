@@ -1,5 +1,4 @@
 import React from "react";
-import Reviews from "./screens/Reviews";
 import { 
   useFonts,
   Nunito_400Regular,
@@ -9,6 +8,7 @@ import {
   Nunito_700Bold
 } from '@expo-google-fonts/nunito'
 import AppLoading from "expo-app-loading";
+import { HomeStackNavigator } from "./routes/HomeStackNavigator";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,8 +24,6 @@ export default function App() {
   }
 
   return (
-    <>
-      <Reviews />
-    </>
+    <HomeStackNavigator />
   );
 }
