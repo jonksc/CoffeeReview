@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { globalStyles } from '../styles/global'
 
 const Reviews = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.titleText}>Reviews</Text>
+    <View style={globalStyles.container}>
+      <Text style={globalStyles.titleText}>Reviews</Text>
     </View>
   )
 }
@@ -12,14 +13,5 @@ const Reviews = () => {
 export default Reviews
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 24,
-    backgroundColor: '#eee',
-    flex: 1
-  },
-  titleText: {
-    fontFamily: 'Nunito_700Bold',
-    fontSize: 40,
-    color: '#333'
-  }
+
 })
