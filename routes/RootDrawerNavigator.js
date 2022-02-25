@@ -1,6 +1,7 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import About from "../screens/About";
+import Header from "../shared/Header";
 import { HomeStackNavigator } from "./HomeStackNavigator";
 
 const Drawer = createDrawerNavigator()
@@ -20,11 +21,12 @@ export const RootDrawerNavigator = () => {
         initialRouteName="Home" >
         <Drawer.Screen 
         name="Home" 
-        component={HomeStackNavigator} />
+        component={HomeStackNavigator}
+        options={{ headerTitle: () => <Header title='Coffee Review' /> }} />
         <Drawer.Screen 
         name="About"
         component={About}
-        options={{ title: 'About Coffee Review'}} />
+        options={{ headerTitle: () => <Header title='About Coffee Review' /> }} />
       </Drawer.Navigator>
     </NavigationContainer>
   )
