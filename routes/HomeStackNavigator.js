@@ -8,9 +8,25 @@ const Stack = createNativeStackNavigator()
 export const HomeStackNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Reviews">
-        <Stack.Screen name="Reviews" component={Reviews} />
-        <Stack.Screen name="ReviewDetails" component={ReviewDetails} />
+      <Stack.Navigator 
+      screenOptions={{
+          headerStyle: { backgroundColor: '#eee' },
+          headerTitleStyle: {
+            fontWeight: 'bold',
+            fontSize: 22,
+          },
+          headerTintColor: '#333',
+          headerTitleAlign: 'center'
+          }} 
+          initialRouteName="Reviews">
+        <Stack.Screen 
+        name="Reviews" 
+        component={Reviews}
+        options={{ title: 'Reviews' }} />
+        <Stack.Screen 
+        name="ReviewDetails" 
+        component={ReviewDetails}
+        options={{ title: 'Review Details' }} />
       </Stack.Navigator>
     </NavigationContainer>
   )
