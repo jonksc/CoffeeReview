@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import React from "react";
 import { 
   useFonts,
@@ -9,6 +10,7 @@ import {
 } from '@expo-google-fonts/nunito'
 import AppLoading from "expo-app-loading";
 import { HomeStackNavigator } from "./routes/HomeStackNavigator";
+import { RootDrawerNavigator } from "./routes/RootDrawerNavigator";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -24,6 +26,6 @@ export default function App() {
   }
 
   return (
-    <HomeStackNavigator />
+    <RootDrawerNavigator />
   );
 }

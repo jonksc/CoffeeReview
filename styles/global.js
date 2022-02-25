@@ -8,7 +8,7 @@ export const globalStyles = StyleSheet.create({
   },
   titleText: {
     fontFamily: 'Nunito_700Bold',
-    fontSize: 35,
+    fontSize: 30,
     color: '#333'
   },
   paragraph: {
