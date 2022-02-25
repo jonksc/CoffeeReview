@@ -8,11 +8,16 @@ export const globalStyles = StyleSheet.create({
   },
   titleText: {
     fontFamily: 'Nunito_700Bold',
-    fontSize: 30,
+    fontSize: 25,
     color: '#333'
   },
   paragraph: {
     marginVertical: 8,
     lineHeight: 20
+  },
+  paragraphText: {
+    fontFamily: 'Nunito_600SemiBold',
+    fontSize: 20,
+    color: '#000'
   }
 })
