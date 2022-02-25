@@ -5,7 +5,7 @@ import { globalStyles } from '../styles/global'
 const About = () => {
   return (
     <View style={globalStyles.container}>
-      <Text>Coffee Review is developed by Jon K.</Text>
+      <Text style={globalStyles.paragraphText}>Coffee Review is developed by Jon K.</Text>
     </View>
   )
 }
