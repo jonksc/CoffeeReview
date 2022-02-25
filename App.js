@@ -9,8 +9,8 @@ import {
   Nunito_700Bold
 } from '@expo-google-fonts/nunito'
 import AppLoading from "expo-app-loading";
-import { HomeStackNavigator } from "./routes/HomeStackNavigator";
 import { RootDrawerNavigator } from "./routes/RootDrawerNavigator";
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -26,6 +26,13 @@ export default function App() {
   }
 
   return (
-    <RootDrawerNavigator />
+    <>
+      <StatusBar
+        style='dark'
+        hidden={false}
+        translucent={false}
+       />
+      <RootDrawerNavigator />
+    </>
   );
 }
