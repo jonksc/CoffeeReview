@@ -13,5 +13,5 @@ const About = () => {
 export default About
 
 const styles = StyleSheet.create({
-
+  
 })

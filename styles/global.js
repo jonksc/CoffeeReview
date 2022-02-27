@@ -19,6 +19,13 @@ export const globalStyles = StyleSheet.create({
     fontFamily: 'Nunito_600SemiBold',
     fontSize: 20,
     color: '#000'
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    padding: 10,
+    fontSize: 18,
+    borderRadius: 6
   }
 })
 
