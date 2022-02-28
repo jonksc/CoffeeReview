@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Modal, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { globalStyles } from '../styles/global'
 import Card from '../shared/Card'
-import { AntDesign, Entypo } from '@expo/vector-icons'
+import { AntDesign, Entypo, Feather } from '@expo/vector-icons'
 import ReviewForm from './ReviewForm'
 
 const Reviews = ({ navigation }) => {
@@ -21,9 +21,13 @@ const Reviews = ({ navigation }) => {
     setIsOpenModal(false)
   }
 
+  const deleteHandler = (key) => {
+    setReviews((prevReviews) => (prevReviews.filter((review) => key !== review.key)))
+  }
+
   return (
     <View style={globalStyles.container}>
-      <Modal visible={isOpenModal} animationType='slide' >
+      <Modal visible={isOpenModal} animationType='slide' onRequestClose={() => setIsOpenModal(false)} >
         <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
           <View style={styles.modalContent}>
             <Entypo name="cross" size={35} color="black" style={{...styles.modalToggle, ...styles.modalClose}} onPress={() => setIsOpenModal(false)} />
@@ -39,7 +43,10 @@ const Reviews = ({ navigation }) => {
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => navigation.navigate('ReviewDetails', item)}>
             <Card>
-              <Text style={globalStyles.titleText}>{item.coffee}</Text>
+              <View style={styles.card}>
+                <Text style={globalStyles.titleText}>{item.coffee}</Text>
+                <Feather name="trash-2" size={20} color="black" onPress={() => deleteHandler(item.key)} />
+              </View>
             </Card>
           </TouchableOpacity>
         )}
@@ -61,5 +68,10 @@ const styles = StyleSheet.create({
   },
   modalContent: {
     flex: 1
+  },
+  card: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
   }
 })

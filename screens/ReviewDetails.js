@@ -8,14 +8,14 @@ const ReviewDetails = ({ route }) => {
 
   return (
     <View style={globalStyles.container}>
-    <Card>
-      <Text style={globalStyles.paragraphText}>Coffee: {coffee}</Text>
-      <Text style={globalStyles.paragraphText}>Brewing Method: {method}</Text>
-      <View style={styles.rating}>
-        <Text style={globalStyles.paragraphText}>Rating: </Text>
-        <Image source={images.ratings[rating]} />
-      </View>
-    </Card>
+      <Card>
+        <Text style={globalStyles.paragraphText}>Coffee: {coffee}</Text>
+        <Text style={globalStyles.paragraphText}>Brewing Method: {method}</Text>
+        <View style={styles.rating}>
+          <Text style={globalStyles.paragraphText}>Rating: </Text>
+          <Image source={images.ratings[rating]} />
+        </View>
+      </Card>
     </View>
   )
 }
