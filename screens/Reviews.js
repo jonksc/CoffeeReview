@@ -1,29 +1,58 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, FlatList, TouchableOpacity, Modal, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { globalStyles } from '../styles/global'
 import Card from '../shared/Card'
 import { AntDesign, Entypo, Feather } from '@expo/vector-icons'
 import ReviewForm from './ReviewForm'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const Reviews = ({ navigation }) => {
   const [isOpenModal, setIsOpenModal] = useState(false)
-  const [reviews, setReviews] = useState([
-    { coffee: 'Kenya AAA', rating: 5, method: 'Hario v60', key: '1'},
-    { coffee: 'Ethiopia Yirgacheffe', rating: 4, method: 'French Press', key: '2'},
-    { coffee: 'Burundi', rating: 3, method: 'Espresso', key: '3'}
-  ])
+  const [reviews, setReviews] = useState([])
 
-  const addReview = (review) => {
+  const getReviews = async () => {
+    try {
+      const jsonReviews = await AsyncStorage.getItem('reviews')
+      if (jsonReviews !== null) {
+        const reviews = JSON.parse(jsonReviews)
+        setReviews(reviews)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const addReview = async (review) => {
     review.key = Math.random().toString()
     setReviews((prevReviews) => (
       [review, ...prevReviews]
     ))
+    
+    try {
+      const jsonReviews = JSON.stringify(reviews)
+      await AsyncStorage.setItem('reviews', jsonReviews)
+    } catch (error) {
+      console.log(error)
+    }
+
     setIsOpenModal(false)
   }
 
-  const deleteHandler = (key) => {
+  const deleteHandler = async (key) => {
     setReviews((prevReviews) => (prevReviews.filter((review) => key !== review.key)))
+
+    try {
+      const jsonReviews = JSON.stringify(reviews)
+      await AsyncStorage.setItem('reviews', jsonReviews)
+    } catch (error) {
+      console.log(error)
+    }
   }
+
+  useEffect(() => {
+    getReviews()
+  }, [])
+  
 
   return (
     <View style={globalStyles.container}>
